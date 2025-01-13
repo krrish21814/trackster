@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int       @id @default(autoincrement())
+  email         String    @unique
+  name          String
+  goals         Goal[]
+  medals        Medal[]
+  overallStreak Int       @default(0)
+  lastActivity  DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Goal {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  tag         GoalTag
+  deadLine    DateTime
+  tasks       Task[]
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime
+  updatedAt   DateTime @updatedAt
+}
+
+model Task {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  priority    Priority
+  completed   Boolean  @default(false)
+  completedAt DateTime?
+  goalId      Int
+  goal        Goal     @relation(fields: [goalId], references: [id])
+  createdAt   DateTime
+  updatedAt   DateTime @updatedAt
+}
+
+model Medal {
+  id       Int      @id @default(autoincrement())
+  earnedAt DateTime
+  type     MedalType
+  userId   Int
+  user     User @relation(fields: [userId], references: [id])
+}
+
+enum GoalTag {
+  PERSONAL
+  WORK
+}
+
+enum Priority {
+  P1
+  P2
+  P3
+}
+
+enum MedalType {
+  WEEK_STREAK    
+  TWO_WEEK_STREAK 
+  MONTH_STREAK   
+  HALF_YEAR_STREAK 
+  YEAR_STREAK    
+}
