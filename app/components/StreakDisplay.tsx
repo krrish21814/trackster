@@ -19,7 +19,7 @@ export function StreakDisplay({ userId, isOpen }: { userId: number, isOpen: bool
     if (streak === 0) { 
       fetchStreak()
     }
-  }, [userId, setStreak])
+  }, [userId, setStreak, streak])
 
   if (streak === 0) return null 
 

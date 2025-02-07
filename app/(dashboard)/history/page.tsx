@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect, useMemo } from 'react';
-import { Tag, Calendar, CheckCircle } from 'lucide-react';
+import { Tag, Calendar } from 'lucide-react';
 import { useGoalStore } from '@/store/use-goals';
 import { TaskFilters } from '@/app/components/TaskFilters';
 import { GoalSearchFilter } from '@/app/components/GoalFilters';

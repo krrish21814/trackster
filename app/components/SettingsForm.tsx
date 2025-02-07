@@ -76,7 +76,7 @@ const SettingsForm = ({ initialUser }: SettingsFormProps) => {
       } else {
         setError(result.error || 'Failed to update profile');
       }
-    } catch (err) {
+    } catch {
       setError('An unexpected error occurred');
     } finally {
       setIsUpdating(false);

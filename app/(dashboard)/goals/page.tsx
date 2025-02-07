@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react'
 export default function GoalsPage() {
   const [isAddOpen, setIsAddOpen] = useState(false)
   const [isListOpen, setIsListOpen] = useState(false)
-  const { isTaskModalOpen, setTaskModalOpen, setGoals } = useGoalStore()
+  const { isTaskModalOpen, setGoals } = useGoalStore()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

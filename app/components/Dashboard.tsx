@@ -4,9 +4,10 @@ import { FaFire, FaMedal, FaTrophy, FaPlus } from 'react-icons/fa';
 import { Goal, Medal, MedalType } from '@prisma/client';
 import { Pagination } from './Pagination';
 import { useStreakStore } from '@/store/useStreakStore';
+import { Task } from '../utils/types';
 
 interface DashboardProps {
-    goals: (Goal & { tasks: any[] })[];
+    goals: (Goal & { tasks: Task[] })[];
     medals: Medal[];
     initialStreak: number;
     onNewGoal: () => void;
