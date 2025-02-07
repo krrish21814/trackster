@@ -31,12 +31,14 @@ model Goal {
   description String
   tag         GoalTag
   deadLine    DateTime
-  tasks       Task[]
+  completed   Boolean  @default(false)  // New field to track completion status
+  tasks       Task[]   // Link to related tasks
   userId      Int
   user        User     @relation(fields: [userId], references: [id])
   createdAt   DateTime
   updatedAt   DateTime @updatedAt
 }
+
 
 model Task {
   id          Int      @id @default(autoincrement())

@@ -1,9 +1,10 @@
-import Image from "next/image";
+import { redirect } from 'next/navigation'
 
-export default function Home() {
+export default async function App() {
+  redirect('/signin')
   return (
     <div>
-      hi
+      hi from krishna
     </div>
-  );
+  )
 }
